@@ -1,6 +1,10 @@
 package com.cursosdedesarrolo.demor2dbc;
 
-import org.springframework.data.repository.reactive.ReactiveCrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.reactive.ReactiveSortingRepository;
+import reactor.core.publisher.Flux;
 
-interface ProductRepo extends ReactiveCrudRepository<ProductEntity, Long> { }
+
+interface ProductRepo extends ReactiveSortingRepository<ProductEntity, Long> {
+    Flux<ProductEntity> findAllBy(Pageable pageable);
+}

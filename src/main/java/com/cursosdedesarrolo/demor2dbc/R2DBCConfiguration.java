@@ -15,18 +15,6 @@ import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator;
 @Configuration
 @EnableR2dbcRepositories
 class R2DBCConfiguration extends AbstractR2dbcConfiguration {
-    /*
-    @Bean
-    public H2ConnectionFactory connectionFactory() {
-        return new H2ConnectionFactory(
-                H2ConnectionConfiguration.builder()
-                        .url("mem:testdb;DB_CLOSE_DELAY=-1;")
-                        .username("sa")
-                        .build()
-        );
-    }
-
-     */
     @Override
     public ConnectionFactory connectionFactory() {
         return new H2ConnectionFactory(
@@ -35,7 +23,7 @@ class R2DBCConfiguration extends AbstractR2dbcConfiguration {
                         .build()
         );
     }
-
+    /*
     @Bean
     public ConnectionFactoryInitializer initializer() {
         var initializer = new ConnectionFactoryInitializer();
@@ -46,4 +34,5 @@ class R2DBCConfiguration extends AbstractR2dbcConfiguration {
         initializer.setDatabasePopulator(databasePopulator);
         return initializer;
     }
+     */
 }
