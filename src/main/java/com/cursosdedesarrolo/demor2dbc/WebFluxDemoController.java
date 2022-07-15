@@ -47,6 +47,13 @@ public class WebFluxDemoController {
         return this.productRepo.findAllBy(PageRequest.of(page, size))
                 .collectList()
                 .zipWith(this.productRepo.count())
-                .map(t -> new PageImpl<>(t.getT1(), PageRequest.of(page, size), t.getT2()));
+                .map(t -> new PageImpl<>(
+                        // listado de objetos
+                        t.getT1(),
+                        // paginador
+                        PageRequest.of(page, size),
+                        // co
+                        // cuenta total de elementos
+                        t.getT2()));
     }
 }
