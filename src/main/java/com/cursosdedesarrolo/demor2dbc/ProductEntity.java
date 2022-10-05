@@ -14,7 +14,10 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table("product")
 public class ProductEntity {
     @Id
-    private long id;
+    private Long id;
     private String name;
     private String description;
+    public boolean hasId() {
+        return id != null;
+    }
 }

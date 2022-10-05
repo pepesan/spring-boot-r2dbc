@@ -19,6 +19,7 @@ public class WebFluxDemoController {
     }
     @PostMapping("/product")
     public Mono<ProductEntity> postProduct(@RequestBody ProductEntity productEntity) {
+        System.out.println(productEntity);
         return productRepo.save(productEntity);
     }
     @GetMapping("/product/{id}")
@@ -34,13 +35,13 @@ public class WebFluxDemoController {
                     p.setDescription(productEntity.getDescription());
                     return p;
                 })
-                .flatMap(p -> this.productRepo.save(p));;
+                .flatMap(p -> this.productRepo.save(p));
 
         return productEntityGuardada;
     }
     @DeleteMapping("/product/{id}")
     public Mono<Void> delete(@PathVariable("id") Integer id) {
-        return this.productRepo.deleteById(new Long(id));
+        return this.productRepo.deleteById(Long.valueOf(id));
     }
     @GetMapping("/productsearch")
     public Mono<Page<ProductEntity>> getAll(@RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "10") int size){
