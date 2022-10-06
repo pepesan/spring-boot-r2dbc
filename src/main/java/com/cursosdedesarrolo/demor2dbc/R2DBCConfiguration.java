@@ -13,8 +13,13 @@ import org.springframework.r2dbc.connection.init.ConnectionFactoryInitializer;
 import org.springframework.r2dbc.connection.init.ResourceDatabasePopulator;
 
 @Configuration
-@EnableR2dbcRepositories
+//@EnableR2dbcRepositories
 class R2DBCConfiguration extends AbstractR2dbcConfiguration {
+    @Override
+    public ConnectionFactory connectionFactory() {
+        return null;
+    }
+    /*
     @Override
     public ConnectionFactory connectionFactory() {
         return new H2ConnectionFactory(
@@ -23,6 +28,8 @@ class R2DBCConfiguration extends AbstractR2dbcConfiguration {
                         .build()
         );
     }
+
+     */
     /*
     @Bean
     public ConnectionFactoryInitializer initializer() {
